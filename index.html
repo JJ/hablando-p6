@@ -49,11 +49,30 @@ console.log(isελληνικά('π'));
 	</section>
 
 	<!-- Lambda -- >
+	  <section>
+	    <section><h1>λ FTW</h1>
+	      <aside class='notes'>Funciones como datos, la esencia de la programación funcional. Como explican aquí: <a href='https://gist.github.com/ericelliott/414be9be82128443f6df'>lambdas no sólo son funciones anónimas</a>. </aside>
+	    </section>
+	    
+	    <section><h1>λ es lambda</h1>
+	      <code><pre>from functools import reduce;
+
+def fib(n):
+    return reduce( lambda prev,this: prev+[ prev[-2]+prev[-1] ], \
+                   range(1,n+1), \
+                   [1,1] )
+
+print(fib(12))
+	      </pre></code>
+	      <aside class='notes'>Se usa reduce con tres argumentos, el primero de los cuales es el inicializador. Lambda está ahí desde la versión 3, pero también en Java desde la 7, y creo que ahora hasta en C++</aside>
+	    </section>
+	  </section>
+	  
 	  <!-- Inmutabilidad -->
 	  <section>
 	    <section><h1>Inmutabilidad para programación rápida y segura</h1>
 	    </section>
-
+	    
 	    <section><h1>Lo que es inmutable no se puede cambiar</h1>
 	      <aside class='notes'>Ni extender, ni se puede acceder a métodos que lo cambien, ni nada. Si algo parece que lo cambia, es porque se genera uno nuevo. Permite trabajar con funciones puras, es más fácil de testear.</aside>
 	    </section>
@@ -75,7 +94,9 @@ console.log(isελληνικά('π'));
 	      <aside class='notes'>Inmutabilidad y recursión van de la mano. No hay una variable de bucle que cambie de valor, sino un argumento inmutable que pasa de una función a otra.</aside>
 	    </section>
 	  </section>
-	<!-- Gradual typing -->
+	  
+	  <!-- Gradual typing -->
+	  
 	<!-- Destructuring -->
 	<!-- Pattern matching -->
 	<!-- Pipeline/Cascade operators -->
