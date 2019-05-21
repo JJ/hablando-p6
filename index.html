@@ -36,7 +36,7 @@
 	    <h2 class='fragment'>es</h2>
 	    <h2 class='fragment'>importante</h2>
 	  </section>
-	  <section>
+	  <section><h1>Me suena a griego</h1>
 	    <pre><code>function isελληνικά(input) {
   const rελληνικά = /^\p{Script=Greek}$/u
   return rελληνικά.test(input)
@@ -59,6 +59,20 @@ console.log(isελληνικά('π'));
 	    </section>
 	    <section><h1>Escalando la inmutabilidad</h1>
 	      <pre><code>val no = "me cambies"</code></pre>
+	    </section>
+	    <section><h1>¿Bucles? No, gracias.</h1>
+	      <pre><code>(defn hasta-cero [n]
+  (if (> n 0)
+    (do
+      (print n, "... ")
+      (hasta-cero (dec n))
+      )
+    )
+  )
+
+(hasta-cero 3)
+	      </code></pre>
+	      <aside class='notes'>Inmutabilidad y recursión van de la mano. No hay una variable de bucle que cambie de valor, sino un argumento inmutable que pasa de una función a otra.</aside>
 	    </section>
 	  </section>
 	<!-- Gradual typing -->
@@ -87,12 +101,16 @@ console.log(isελληνικά('π'));
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true }
-				]
+			width: '95%',
+			controls: true,
+			progress: true,
+			history: true,
+			dependencies: [
+			{ src: 'plugin/markdown/marked.js' },
+			{ src: 'plugin/markdown/markdown.js' },
+			{ src: 'plugin/notes/notes.js', async: true },
+			{ src: 'plugin/highlight/highlight.js', async: true }
+			]
 			});
 		</script>
 	</body>
