@@ -30,6 +30,10 @@
 	  <h2><code>@jjmerelo</code></h2>
 	</section>
 
+        <section><h1>Primero</h1>
+          <h2>Hablemos de lo que hacen los lenguajes que molan</h2>
+        </section>
+        
 	<!-- Unicode -->
 	<section>
 	  <section data-background='https://live.staticflickr.com/21/24491789_c9692abd5d_o_d.jpg'><h1>Unicode</h1>
@@ -48,14 +52,14 @@ console.log(isελληνικά('π'));
 	  </section>
 	</section>
 
-	<!-- Lambda -- >
+	<!-- Lambda -->
 	  <section>
 	    <section><h1>λ FTW</h1>
 	      <aside class='notes'>Funciones como datos, la esencia de la programación funcional. Como explican aquí: <a href='https://gist.github.com/ericelliott/414be9be82128443f6df'>lambdas no sólo son funciones anónimas</a>. </aside>
 	    </section>
 	    
 	    <section><h1>λ es lambda</h1>
-	      <code><pre>from functools import reduce;
+	      <pre><code>from functools import reduce;
 
 def fib(n):
     return reduce( lambda prev,this: prev+[ prev[-2]+prev[-1] ], \
@@ -63,7 +67,7 @@ def fib(n):
                    [1,1] )
 
 print(fib(12))
-	      </pre></code>
+	      </code></pre>
 	      <aside class='notes'>Se usa reduce con tres argumentos, el primero de los cuales es el inicializador. Lambda está ahí desde la versión 3, pero también en Java desde la 7, y creo que ahora hasta en C++</aside>
 	    </section>
 	  </section>
@@ -96,7 +100,33 @@ print(fib(12))
 	  </section>
 	  
 	  <!-- Gradual typing -->
-	  
+	  <section>
+            <section><h1>Tipado gradual: lo mejor de los dos
+	      mundos</h1>
+              <h2 class='fragment'>Estático: <code>let secondNeedle: number =
+	  3</code></h2>
+              <h2 class='fragment'>Dinámico: <code>let firstNeedle = "Hey"</code></h2>
+            </section>
+            <section><h1>Juntos en TypeScript</h1>
+              <pre><code>let find = function ( needle, haystack ) {
+    for (let i of haystack) {
+        if ( needle === i ) {
+            return true
+        }
+    }
+    return false;
+}
+let randomList = ["Hey", 3]
+let firstNeedle = "Hey"
+let secondNeedle: number = 3
+console.log( find( firstNeedle, randomList ) )
+console.log( find( secondNeedle, randomList  ) )
+              </code></pre>
+                <aside class='notes'>Nótese que también tenemos una
+	  lambda ahí al principio. Información sobre <a
+	          href='https://golem.ph.utexas.edu/category/2018/02/gradual_typing.html'>gradual typing</a></aside>
+            </section>
+          </section>
 	<!-- Destructuring -->
 	<!-- Pattern matching -->
 	<!-- Pipeline/Cascade operators -->
