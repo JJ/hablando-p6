@@ -10,10 +10,8 @@ fun main(args: Array<String>) {
                         return Resultado( cosas[intento], false )
                 }
         }
-        
         val (valor1, premio1) = busca( 2 )
         println( "2 devuelve " + valor1 + " y tiene premio " + premio1  )
         val (valor2, premio2) = busca( 4 )
         println( "4 devuelve " + valor2 + " y tiene premio " + premio2  )
-        
 }
