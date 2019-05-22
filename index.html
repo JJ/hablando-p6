@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
+
     <title>Open South Code: Déjame que te hable de Perl 6</title>
-    
+
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/sky.css">
@@ -13,7 +13,7 @@
 
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="lib/css/monokai.css">
-    
+
     <!-- Printing and PDF exports -->
     <script>
       var link = document.createElement( 'link' );
@@ -163,11 +163,39 @@ fun main(args: Array&lt;String>) {
         println( "4 devuelve " + valor2 + " y tiene premio " + premio2  )
 }
               </code></pre>
-              <aside class='notes'>
+              <aside class='notes'>Por medio, <a
+              href='https://stackoverflow.com/questions/56252911/i-get-the-error-no-main-manifest-attribute-when-compiling-and-running-a-simpl/56253260#56253260'>esta
+                pregunta en StackOverflow</a>. También usamos un lambda.</aside>
             </section>
           </section>
           
-	<!-- Pattern matching -->
+	  <!-- Pattern matching -->
+          <section>
+          <section>
+            <h1>Comparación de patrones para decisiones complejas</h1>
+            <h2 class='fragment'>Evitando cascadas de
+              <code>if</code></h2>
+          </section>
+          <section><h1>Scalando la comparación</h1>
+            <pre><code>val puntos = (carta: String) => {
+  carta match {
+    case "As" => 11
+    case "3"  => 10
+    case "J"  => 2
+    case "Q"  => 3
+    case "K"  => 4
+    case  _   => 0
+  }
+}
+
+println("As ", puntos("A"))
+println("7 ", puntos("7"))
+            </code></pre><aside class='notes'>Usando también un lambda
+              aquí, como casi siempre. La mayoría de los lenguajes
+              funcionales tienen este tipo de comparación de
+              patrones. Sorprendentemente, este programa salió a la primera.</aside>
+          </section>
+          </section>
 	<!-- Pipeline/Cascade operators -->
 	<!-- Multiple dispatch -->
 	<!-- Laziness -->
