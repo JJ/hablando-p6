@@ -13,3 +13,6 @@ css/reveal.min.css
 js/reveal.min.js
 *~
 
+META-INF/
+*.jar
+*.class
