@@ -235,7 +235,16 @@ IO.puts  resultado
               
             </section>
 
-            <section>
+            <section><h1>Pintan bastos con Julia</h1>
+              <pre><code>@enum Suit ♣ ♦ ♥ ♠
+@enum Palo Bastos Espadas Oros Copas
+
+cadena( n::Int, s::Suit ) = string( n, " ", s )
+cadena( n::Int, p::Palo ) = string( n, " de ", p )
+
+println( cadena( 3, ♦) )
+println( cadena( 7, Bastos ) )
+            </code></pre>
               <aside class='notes'>Hay muchos tipos de envío múltiple
               que varían con la signatura, lo que ocurre es que la
               signatura tiene un concepto mucho más concreto en Julia
@@ -243,7 +252,21 @@ IO.puts  resultado
                 valores de los argumentos.</aside>
             </section>
           </section>
-	<!-- Laziness -->
+
+	  <!-- Laziness -->
+          <section>
+            <section><h1>Los perezosos heredarán la Tierra</h1>
+              <h2 class='fragment'>Evaluación perezosa FTW</h2>
+              <aside class='notes'>Otra característica (más) de
+          programación funcional, permite trabajar con estructuras de
+                datos infinitas y retrasar la evaluación hasta que sea
+          necesaria. Puede tener <a
+          href='https://softwareengineering.stackexchange.com/questions/124500/why-isnt-lazy-evaluation-used-everywhere'>una
+                serie de desventajas</a>, sin embargo. Más <a
+          href='https://www.seas.upenn.edu/~cis194/fall16/lectures/07-laziness.html'>ventajas
+                y desventajas</a></aside>
+            </section>
+          </section>
 	<!-- Traits (with type tunnelling) -->
 
 	<section data-background='https://live.staticflickr.com/7914/46806908884_b4df834428_k_d.jpg'>
