@@ -361,7 +361,7 @@ fn main() {
 multi sub collatz( Int $a where $a %% 2 ) { return  collatz( ($a/2).Int ).prepend( $a )}
 multi sub collatz( $a where not $a %% 2 ) { return collatz( $a*3 + 1 ).prepend($a)}
 
-my @collatz = lazy gather for 1..1000 { take collatz( $_ ); }
+my @collatz = lazy gather for ١..١٠٠٠ { take collatz( $_ ); }
 
 1..100 ==> map( { @collatz[ $_ ] }) ==> grep( *.elems > 15 ) ==> my @long-chains;
 
@@ -377,7 +377,12 @@ for ^10 -> $þ {
     say "Secuencia con $þ ", $seq.?Str eq "Collatz" ?? " es " !! " no es " , "Collatz";
 }
           </code></pre>
-          <aside class='notes'><a href='https://es.wikipedia.org/wiki/Conjetura_de_Collatz'>Conjetura de Collatz</a></aside>
+          <aside class='notes'><a
+    href='https://es.wikipedia.org/wiki/Conjetura_de_Collatz'>Conjetura
+    de Collatz</a>. Este programa tiene todas las características
+    chulas de las que hemos hablado anteriormente. Y algunas que no
+    tiene ninguno, como los rangos en el sentido correcto de escritura
+    y usando dígitos unicode.</aside>
 
           </section>
           <section><h1>Aprende Perl 6 para aprender <em>todos</em> los

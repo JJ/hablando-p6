@@ -7,7 +7,7 @@ multi sub collatz( 1 ) { return [1] }
 multi sub collatz( Int $a where $a %% 2 ) { return  collatz( ($a/2).Int ).prepend( $a )}
 multi sub collatz( $a where not $a %% 2 ) { return collatz( $a*3 + 1 ).prepend($a)}
 
-my @collatz = lazy gather for 1..1000 { take collatz( $_ ); }
+my @collatz = lazy gather for ١..١٠٠٠ { take collatz( $_ ); }
 
 1..100 ==> map( { @collatz[ $_ ] }) ==> grep( *.elems > 15 ) ==> my @long-chains;
 
