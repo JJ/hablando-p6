@@ -16,3 +16,5 @@ js/reveal.min.js
 META-INF/
 *.jar
 *.class
+
+*.exe
