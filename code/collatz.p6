@@ -2,9 +2,9 @@
 
 use v6;
 
-# Conjetura de Collatz: https://es.wikipedia.org/wiki/Conjetura_de_Collatz
+# Collatz conjecture: https://es.wikipedia.org/wiki/Conjetura_de_Collatz
 multi sub collatz( 1 ) { return [1] }
-multi sub collatz( Int $a where $a %% 2 ) { return  collatz( ($a/2).Int ).prepend( $a )}
+multi sub collatz( Int $a where $a %% 2 ) { return collatz( ($a/2).Int ).prepend( $a )}
 multi sub collatz( $a where not $a %% 2 ) { return collatz( $a*3 + 1 ).prepend($a)}
 
 my @collatz = lazy gather for ١..١٠٠٠ { take collatz( $_ ); }
@@ -20,6 +20,6 @@ sub prefix:<⇈> ( $𝒾 ) {
 
 for ^10 -> $þ {
     my ($seq, $elems) = ⇈$þ;
-    say "Secuencia con $þ ", $seq.?Str eq "Collatz" ?? " es " !! " no es " , "Collatz";
+    say "Sequence with $þ ", $seq.?Str eq "Collatz" ?? " is " !! " isn't " , "Collatz";
 }
 
