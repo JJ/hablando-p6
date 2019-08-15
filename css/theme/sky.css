@@ -57,13 +57,12 @@ body {
   font-family: "Ubuntu", sans-serif;
   font-weight: normal;
   line-height: 1.2;
-  letter-spacing: -0.08em;
   text-shadow: none;
   word-wrap: break-word; }
 
 .reveal h1 {
     font-family: 'K2D', cursive;
-    font-size: 3.77em;
+    font-size: 3em;
 }
 
 .reveal h2 {
