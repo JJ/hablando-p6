@@ -5,4 +5,4 @@ let horadam =
 
 
 let seq_15 = horadam |> Seq.take 15
-printfn "Primeros 15 %A" seq_15
+printfn "First 15 %A" seq_15

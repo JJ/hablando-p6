@@ -75,7 +75,7 @@ def fib(n):
 
 print(fib(12))
 	      </code></pre>
-	      <aside class='notes'>Se usa reduce con tres argumentos, el primero de los cuales es el inicializador. Lambda está ahí desde la versión 3, pero también en Java desde la 7, y creo que ahora hasta en C++</aside>
+	      <aside class='notes'>Se usa reduce con tres argumentos, el primero de los cuales es el inicializador. Lambda está ahí desde la versión 3, pero también en Java desde la 7, y creo que ahora hasta en C++. They are pretty much all over.</aside>
 	    </section>
 	  </section>
 	  
@@ -215,47 +215,47 @@ println("7 ", puntos("7"))
             también te fuerza a pensar en términos de aplicaciones de
                 unos dominios a otros dominios.</aside>
             </section>
-            <section><h1>Tengo un Elixir para eso</h1>
-              <pre><code>resultado = 1..100
+	    
+            <section><h1>I've got an Elixir for that</h1>
+              <pre><code>result = 1..100
       |> Enum.filter(fn a -> rem(a,2) == 0 end)
       |> Enum.map(fn a -> :math.pow(a,2) end)
       |> Enum.reduce( &(&1 + &2) )
 
-IO.puts  resultado
+IO.puts  result
               </code></pre> <aside class='notes'>Obsérvese no sólo el
               uso de lambdas, sino el uso de las mismas con datos
-                implícitos. Otra cosa funcional a la buchaca</aside>
+                implícitos. Otra cosa funcional a la buchaca. Elixir is pretty functional, also.</aside>
             </section>
           </section>
           
 	  <!-- Multiple dispatch -->
           <section>
-            <section><h1>Envío múltiple ⇒ <em>Multiple
-              dispatch</em></h1>
-              <h2 class='fragment'>Implementaciones rápidas a su
-                servicio</h2>
+            <section><h1>Multiple dispatch</h1>
+              <h2 class='fragment'>High performance implementation at your
+                service</h2>
               <aside class='notes'>No es lo mismo que <a
               href='http://wiki.c2.com/?MultipleDispatch'>Overloading</a>,
               porque se puede hacer con subrutinas y se trata de
-                identificar los argumentos, no el tipo que lo invoca.</aside>
+                identificar los argumentos, no el tipo que lo invoca. Although at the end of the day the object is another argument, so it¡s pretty much the same.
+	      </aside>
               
             </section>
 
-            <section><h1>Pintan bastos con Julia</h1>
+            <section><h1>Suit up with Julia</h1>
               <pre><code>@enum Suit ♣ ♦ ♥ ♠
 @enum Palo Bastos Espadas Oros Copas
 
-cadena( n::Int, s::Suit ) = string( n, " ", s )
-cadena( n::Int, p::Palo ) = string( n, " de ", p )
+toString( n::Int, s::Suit ) = string( n, " ", s )
+toString( n::Int, p::Palo ) = string( n, " de ", p )
 
-println( cadena( 3, ♦) )
-println( cadena( 7, Bastos ) )
-            </code></pre>
+println( toString( 3, ♦) )
+println( toString( 7, Bastos ) ) </code></pre>
               <aside class='notes'>Hay muchos tipos de envío múltiple
               que varían con la signatura, lo que ocurre es que la
               signatura tiene un concepto mucho más concreto en Julia
               que en Perl 6, donde incluye también restricciones a los
-                valores de los argumentos.</aside>
+                valores de los argumentos. </aside>
             </section>
           </section>
 
@@ -281,7 +281,7 @@ println( cadena( 7, Bastos ) )
 
 
 let seq_15 = horadam |> Seq.take 15
-printfn "Primeros 15 %A" seq_15
+printfn "First 15 %A" seq_15
               </code></pre>
               <aside class='notes'>También se usan lambdas y "pipes",
                 dos cosas características de programación
