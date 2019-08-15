@@ -7,4 +7,4 @@ def fib(n):
                    range(1,n+1), \
                    [1,1] )
 
-print(fib(10000)[10000])
+print(fib(50000)[50000])
