@@ -1,0 +1,11 @@
+Language,Index,Time
+Python,50000,24.46
+Perl6,50000,1.06
+Python,10000,0.31
+Perl6,10000,0.36
+Python,20000,1.48
+Perl6,20000,0.47
+Python,30000,4.53
+Perl6,30000,0.71
+Python,65535,58.34
+Perl6,65535,1.18
