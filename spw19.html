@@ -375,7 +375,7 @@ my @collatz = lazy gather for ١..١٠٠٠ { take collatz( $_ ); }
 
 sub prefix:<⇈> ( $𝒾 ) {
     given @collatz[ $𝒾 ].elems {
-        when $_ > 15 { return @collatz[ $𝒾 ] but "Collatz", @collatz[ $𝒾 ].elems }
+        when $_ > 15 { return @collatz[ $𝒾 ] but "15-Collatz", @collatz[ $𝒾 ].elems }
         default  { @collatz[ $𝒾 ], @collatz[ $𝒾 ].elems }
     }
 }
