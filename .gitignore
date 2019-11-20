@@ -20,3 +20,5 @@ META-INF/
 *.exe
 cards
 cartas
+
+.RData
