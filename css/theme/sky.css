@@ -280,3 +280,6 @@ body {
 @media print {
   .backgrounds {
     background-color: #f7fbfc; } }
+
+.line { display: block; }
+.line.focus { background: darkgray; }
