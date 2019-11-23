@@ -151,7 +151,7 @@ print(fib(12)) </code></pre>
 	      <p class='fragment' data-code-focus="2">λ 😺</p>
 	      <aside class='notes'>Este es un ejemplo clásico de Go, y
 	      no tiene nada que ver con el pattern matching que hemos
-		visto anteriormente.</aside>
+		visto anteriormente. Aquí empezamos a hacer los chistes de cartas e Inteligencia artificial.</aside>
 	    </section>
 	</section>
 	
@@ -196,7 +196,35 @@ print(fib(12)) </code></pre>
 	    </section>
 	  </section>
 
-	  	  <!-- Pattern matching -->
+
+	  <!-- Programación asíncrona -->
+	  <section>
+	    <section data-background='https://live.staticflickr.com/65535/40744489923_18185ae657_o_d.jpg'>
+	      <h1>El mundo funciona de forma asíncrona</h1></section>
+
+	    <section><h3>Dart también</h3>
+	      <pre><code>Future listaBackups(String dir) async {
+  var directory = new Directory(dir);
+  if ( await directory.exists() ) {
+    directory.list(recursive: true, followLinks: false).listen((FileSystemEntity entity) {
+        if ( entity.path.contains("car") ) {
+          print( entity.path );
+        }
+    });
+  }
+}
+Future&lt;void> main() async {
+  var files = listaBackups( ".");
+  print("Pillando ficheros");
+  await files;
+}</code></pre>
+	      <p class='fragment' data-code-focus='1,3,4,11,12,13'>Async espero</p>
+	      <aside class='notes'>Muchos lenguajes son asíncronos, porque aprovechan mejor los recursos del procesador.</aside>
+	    </section>
+	  </section>
+
+
+	  <!-- Pattern matching -->
           <section>
           <section>
             <h1>Comparación de patrones para decisiones complejas</h1>
@@ -216,8 +244,7 @@ print(fib(12)) </code></pre>
 }
 println("As ", puntos("A"))
 println("7 ", puntos("7"))</code></pre>
-	    <p class='fragment' data-code-focus="2">Matching!</p>
-	    <p class='fragment' data-code-focus="1">λ 😺</p>
+	    <p><span class='fragment' data-code-focus="2">Matching!</span> <span class='fragment' data-code-focus="1">y <strong>λ 😺</strong></span></p>
 	    <aside class='notes'>Usando también un lambda
               aquí, como casi siempre. La mayoría de los lenguajes
               funcionales tienen este tipo de comparación de
@@ -274,10 +301,12 @@ IO.puts  resultado</code></pre>
     |> Seq.unfold (fun (x, y) -> let z = 0.25f*x + 0.75f*y in Some(z, (y, z))) 
     |> Seq.append [0.0f; 1.0f]
 
-
 let seq_15 = horadam |> Seq.take 15
 printfn "Primeros 15 %A" seq_15
               </code></pre>
+	      <p class='fragment' data-code-focus="3">😴</p>
+	      <p class='fragment' data-code-focus="1">λ 😺</p>
+
               <aside class='notes'>También se usan lambdas y "pipes",
                 dos cosas características de programación
                 funcional. El hecho de que sea infinita está implícita
@@ -292,10 +321,11 @@ printfn "Primeros 15 %A" seq_15
           <!-- Gradual typing -->
 	  <section>
             <section><h1>Tipado gradual: lo mejor de los dos
-	      mundos</h1>
-              <h2 class='fragment'>Estático: <code>let secondNeedle: number =
-	  3</code></h2>
-              <h2 class='fragment'>Dinámico: <code>let firstNeedle = "Hey"</code></h2>
+		mundos</h1>
+	      <pre><code>let secondNeedle: number = 3
+let firstNeedle = "Hey"</code></pre>
+              <h2 class='fragment' data-code-focus='1'>Estático </h2>
+	      <h2 class='fragment' data-code-focus='2'>Dinámico </h2>
             </section>
             <section><h1>Juntos en TypeScript</h1>
               <pre><code>let find = function ( needle, haystack ) {
@@ -312,6 +342,7 @@ let secondNeedle: number = 3
 console.log( find( firstNeedle, randomList ) )
 console.log( find( secondNeedle, randomList  ) )
               </code></pre>
+	      <p><span class='fragment' data-code-focus='10,11'>Con y sin tipo</span> <span class='fragment' data-code-focus="1">y <strong>λ 😺</strong></span></p>
                 <aside class='notes'>Nótese que también tenemos una
 	  lambda ahí al principio. Información sobre <a
 							href='https://golem.ph.utexas.edu/category/2018/02/gradual_typing.html'>gradual typing</a>. Cada función tiene un tipo diferente, y el intérprete decide qué tipo tiene basado en lo que recibe.
@@ -351,6 +382,7 @@ fun main(args: Array&lt;String>) {
         println( "4 devuelve " + valor2 + " y tiene premio " + premio2  )
 }
               </code></pre>
+	      <p><span class='fragment' data-code-focus="7,9,12">Deconstruyendo</span> <span class='fragment' data-code-focus="3">y <strong>λ 😺</strong></span></p>
               <aside class='notes'>Por medio, <a
               href='https://stackoverflow.com/questions/56252911/i-get-the-error-no-main-manifest-attribute-when-compiling-and-running-a-simpl/56253260#56253260'>esta
                 pregunta en StackOverflow</a>. También usamos un lambda.</aside>
