@@ -92,6 +92,7 @@ end
 for i ∈ (2,3,5,11)
     println("Puntuación de\t", i, "\t→ ", puntuación(i) )
 end </code></pre>
+	      <p class='fragment' data-code-focus="4,5,8">😻</p>
 	    <aside class='notes'>Julia usa los operadores en su
 	      notación matemática con toda la naturalidad del mundo.</aside>
 	  </section>
@@ -191,7 +192,7 @@ print(fib(12)) </code></pre>
 (hasta-cero 3)
 	      </code></pre>
 	      <p class="fragment"
-		 data-code-focus="1">Función <code>hasta-cero</code></p>
+		 data-code-focus="1">Función <code>hasta-cero</code>...</p>
 	      <p class="fragment" data-code-focus="5">... recursiva</p>
 	      <aside class='notes'>Inmutabilidad y recursión van de la mano. No hay una variable de bucle que cambie de valor, sino un argumento inmutable que pasa de una función a otra.</aside>
 	    </section>
@@ -219,7 +220,7 @@ Future&lt;void> main() async {
   print("Pillando ficheros");
   await files;
 }</code></pre>
-	      <p class='fragment' data-code-focus='1,3,4,11,12,13'>Async espero</p>
+	      <p class='fragment' data-code-focus='1,3,4,11,12,14'>Async espero</p>
 	      <aside class='notes'>Muchos lenguajes son asíncronos, porque aprovechan mejor los recursos del procesador.</aside>
 	    </section>
 	  </section>
@@ -275,7 +276,7 @@ println("7 ", puntos("7"))</code></pre>
 
 IO.puts  resultado</code></pre>
 	      <p class='fragment' data-code-focus="2-4">Enganchando</p>
-	      <p class='fragment' data-code-focus="2">λ 😺</p>
+	      <p class='fragment' data-code-focus="2,3">λ 😺</p>
 	      <aside class='notes'>Obsérvese no sólo el
               uso de lambdas, sino el uso de las mismas con datos
                 implícitos. Otra cosa funcional a la buchaca</aside>
@@ -284,7 +285,8 @@ IO.puts  resultado</code></pre>
 
 	  <!-- Laziness -->
           <section>
-            <section><h1>Los perezosos heredarán la Tierra</h1>
+            <section data-background='https://live.staticflickr.com/59/185564886_9b4361b29f_o_d.jpg'>
+	      <h1>Los perezosos heredarán la Tierra</h1>
               <h2 class='fragment'>Evaluación perezosa FTW</h2>
               <aside class='notes'>Otra característica (más) de
           programación funcional, permite trabajar con estructuras de
