@@ -1,7 +1,9 @@
+(def elipsis (fn [n] (print "... ", n ) ))
+
 (defn to-zero [n]
   (if (> n 0)
     (do
-      (print n, "... ")
+      (elipsis [n])
       (to-zero (dec n))
       )
     )
