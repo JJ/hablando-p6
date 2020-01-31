@@ -32,7 +32,18 @@
           <h3><code>cc-by-sa</code></h3>
 	</section>
 
-        <section><h1>What do all the cool languages do?</h1>
+        <section data-background='https://live.staticflickr.com/619/20996949839_9be1423b2c_k_d.jpg'>
+          <h1>Previously known as</h1>
+          <h2 class='fragment'>Perl 6</h2>
+        </section>
+
+        <section data-background='https://live.staticflickr.com/5151/6948163750_f77c60dae6_k_d.jpg'><h2>Long story short</h2>
+          <h1 class='fragment'>It's a different language</h1>
+        </section>
+
+        <section data-background='https://live.staticflickr.com/65535/2510199573_b9d6625c5c_o_d.jpg'>
+          <h2>But previously</h2>
+          <h1 class='fragment'>What do many cool emerging languages do?</h1>
 
           <aside class='notes'>Inspirado un montón por <a
         href='https://medium.com/@kasperpeulen/10-features-from-various-modern-languages-that-i-would-like-to-see-in-any-programming-language-f2a4a8ee6727'>este
@@ -55,7 +66,7 @@
 console.log(isελληνικά('π'));
 	    </code></pre>
 
-	    <aside class='notes'> As a matter of fact, Perl 6 is the only one with good Unicode arithmetic support.</aside>
+	    <aside class='notes'> As a matter of fact, Raku is the only one with good Unicode arithmetic support.</aside>
 	  </section>
 	</section>
 
@@ -249,7 +260,7 @@ println( toString( 7, Bastos ) ) </code></pre>
               <aside class='notes'>Hay muchos tipos de envío múltiple
               que varían con la signatura, lo que ocurre es que la
               signatura tiene un concepto mucho más concreto en Julia
-              que en Perl 6, donde incluye también restricciones a los
+              que en Raku, donde incluye también restricciones a los
                 valores de los argumentos. </aside>
             </section>
           </section>
@@ -322,7 +333,7 @@ fn main() {
 }
 
               </code></pre>
-              <aside class='notes'>Aunque en realidad los de Perl 6
+              <aside class='notes'>Aunque en realidad los de Raku
     son bastante más flexibles y se pueden añadir en tiempo de
     ejecución, esto es lo que hay en Rust, donde además se separan las
     variables de instancia de la implementación. Y con esto terminan
@@ -332,35 +343,29 @@ fn main() {
             
           </section>
 
-	<section data-background='https://live.staticflickr.com/7914/46806908884_b4df834428_k_d.jpg'>
-	  <h1>JJ Merelo</h1>
-	  <h2><code>@jjmerelo</code> <a href='https://github.com/JJ'><code>github.com/JJ</code></a></h2>
-	  <aside class='notes'>Trabajo en la universidad, en la documentación de Perl 6, y todo ese rollo</aside>
-	</section>
-
-        <section data-background='https://live.staticflickr.com/65535/48549954721_0a93aa703f_k_d.jpg'>
-	  <h1>What's the killer app of Perl 6</h1>
-          <h2 class='fragment'>Learning programming languages!</h2>
-        </section>
-        
         <section>
-          <section><h1>All these are in Perl 6</h1>
-            <aside class='notes'>Todas esas son funcionalidades de Perl
-              6</aside>
+          <section data-background='https://live.staticflickr.com/65535/40943471043_5226aa62ad_k_d.jpg'>
+            <h1>Raku: Everything <strong>and</strong> the kitchen
+              sink</strong></h1>
           </section>
-	  
+
           <section data-background='emacs.png'><h1>Took me a while</h1>
             <h2 class='fragment'>Syntax is tricky</h2>
 	    <h3 class='fragment'>And there's a new Emacs mode to install</h3>
-            <aside class='notes'>Bueno, y por descargar el modo en
-          emacs, instalar el programa en sí... El que más ha costado
-              ha sido Rust, y el que menos Elixir.</aside>
+            <aside class='notes'>Rust was the most complicated, Elixir
+              the simplest</aside>
           </section>
-        </section>
 
-        <section>
-          <section data-background='https://live.staticflickr.com/65535/40943471043_5226aa62ad_k_d.jpg'>
-            <h1>Perl 6: Everything <strong>and</strong> the kitchen sink</strong></h1></section>
+          <section><h2>But I <em>knew</em> the concepts</h2>
+            <h1 class='fragment'>Because I code in Raku</h1>
+          </section>
+
+          <section data-background='https://live.staticflickr.com/7914/46806908884_b4df834428_k_d.jpg'>
+	  <h1>JJ Merelo</h1>
+	  <h2><code>@jjmerelo</code> <a href='https://github.com/JJ'><code>github.com/JJ</code></a></h2>
+	  <aside class='notes'>Trabajo en la universidad, en la documentación de Raku, y todo ese rollo</aside>
+	  </section>
+
           <section><pre><code>multi sub collatz( 1 ) { return [1] }
 multi sub collatz( Int $a where $a %% 2 ) { return collatz( ($a/2).Int ).prepend( $a )}
 multi sub collatz( $a where not $a %% 2 ) { return collatz( $a*3 + 1 ).prepend($a)}
@@ -391,13 +396,9 @@ for ^10 -> $þ {
 
           </section>
 
-	  <section><h2>Sometimes it's also faster</h2>
-	    <img src='code/fib-py-vs-p6.png' alt='Perl 6 can be faster at some of these things than the language' style='height:500px'>
-	  </section>
-	  
-          <section><h1>Learn Perl 6 to learn every single language</h1>
+          <section><h1>Learn Raku to learn every single language</h1>
             <h2 class='fragment'>Or at least the cool ones.</h2>
-	    <aside class='notes'>You can learn also a part of Perl 6 to learn a kind of languages, like functional, for instance.</aside>
+	    <aside class='notes'>You can learn also a part of Raku to learn a kind of languages, like functional, for instance.</aside>
           </section>
 
 	</section>
