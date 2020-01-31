@@ -1,0 +1,435 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>FOSDEM emerging languages devroom: Let me tell you about Raku</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/sky.css">
+    <link rel="stylesheet" href="css/extra.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+	<section data-background='https://live.staticflickr.com/2241/1576385307_b195b21468_o_d.jpg'>
+	  <h1>Let me tell you about Raku</h1>
+	  <h2><code>@jjmerelo</code></h2>
+          <h3><code>cc-by-sa</code></h3>
+	</section>
+
+        <section><h1>What do all the cool languages do?</h1>
+
+          <aside class='notes'>Inspirado un montón por <a
+        href='https://medium.com/@kasperpeulen/10-features-from-various-modern-languages-that-i-would-like-to-see-in-any-programming-language-f2a4a8ee6727'>este
+            y otros artículos similares.</a>. También por <a
+        href='https://therenegadecoder.com/code/the-coolest-programming-language-features/'>este
+            de The Renegade Coder</a>.</aside>
+        </section>
+        
+	<!-- Unicode -->
+	<section>
+	  <section data-background='https://live.staticflickr.com/65535/47925314648_9d71567b99_b_d.jpg'><h1>Unicode</h1>
+	    <h2 class='fragment'>is</h2>
+	    <h2 class='fragment'>important</h2>
+	  </section>
+	  <section><h1>It's all Greek to me</h1>
+	    <pre><code>function isελληνικά(input) {
+  const rελληνικά = /^\p{Script=Greek}$/u
+  return rελληνικά.test(input)
+}
+console.log(isελληνικά('π'));
+	    </code></pre>
+
+	    <aside class='notes'> As a matter of fact, Perl 6 is the only one with good Unicode arithmetic support.</aside>
+	  </section>
+	</section>
+
+	<!-- Lambda -->
+	  <section>
+	    <section><h1>λ FTW</h1>
+	      <aside class='notes'>Funciones como datos, la esencia de la programación funcional. Como explican aquí: <a href='https://gist.github.com/ericelliott/414be9be82128443f6df'>lambdas no sólo son funciones anónimas</a>. This is the first step to a language having functional features; it's not all.</aside>
+	    </section>
+	    
+	    <section><h1>λ is lambda</h1>
+	      <pre><code>from functools import reduce;
+
+def fib(n):
+    return reduce( lambda prev,this: prev+[ prev[-2]+prev[-1] ], \
+                   range(1,n+1), \
+                   [1,1] )
+
+print(fib(12))
+	      </code></pre>
+	      <aside class='notes'>Se usa reduce con tres argumentos, el primero de los cuales es el inicializador. Lambda está ahí desde la versión 3, pero también en Java desde la 7, y creo que ahora hasta en C++. They are pretty much all over.</aside>
+	    </section>
+	  </section>
+	  
+	  <!-- Inmutabilidad -->
+	  <section>
+	    <section><h1>Immutability for high performance</h1>
+	    </section>
+	    
+	    <section><h1>What's immutable can't be changed</h1>
+	      <aside class='notes'>Ni extender, ni se puede acceder a métodos que lo cambien, ni nada. Si algo parece que lo cambia, es porque se genera uno nuevo. Permite trabajar con funciones puras, es más fácil de testear.</aside>
+	    </section>
+	    
+	    <section><h1>Scala-ing immutability</h1>
+	      <pre><code>val dont = "change me"</code></pre>
+	    </section>
+
+	    <section data-background='https://live.staticflickr.com/4806/31057964327_dc046005ee_k_d.jpg'>
+	      <h1>Old as a loop</h1>
+	      <pre><code>(defn hasta-cero [n]
+  (if (> n 0)
+    (do
+      (print n, "... ")
+      (hasta-cero (dec n))
+      )
+    )
+  )
+
+(hasta-cero 3)
+	      </code></pre>
+	      <aside class='notes'>Inmutabilidad y recursión van de la mano. No hay una variable de bucle que cambie de valor, sino un argumento inmutable que pasa de una función a otra.</aside>
+	    </section>
+	  </section>
+	  
+	  <!-- Gradual typing -->
+	  <section>
+            <section><h1>Gradual typing: best of both worlds</h1>
+              <h2 class='fragment'>Static: <code>let secondNeedle: number =
+	  3</code></h2>
+              <h2 class='fragment'>Dynamic: <code>let firstNeedle = "Hey"</code></h2>
+            </section>
+            <section><h1>Together in TypeScript</h1>
+              <pre><code>let find = function ( needle, haystack ) {
+    for (let i of haystack) {
+        if ( needle === i ) {
+            return true
+        }
+    }
+    return false;
+}
+let randomList = ["Hey", 3]
+let firstNeedle = "Hey"
+let secondNeedle: number = 3
+console.log( find( firstNeedle, randomList ) )
+console.log( find( secondNeedle, randomList  ) )  </code></pre>
+                <aside class='notes'>Nótese que también tenemos una
+	  lambda ahí al principio. Información sobre <a
+	          href='https://golem.ph.utexas.edu/category/2018/02/gradual_typing.html'>gradual typing</a></aside>
+            </section>
+          </section>
+          
+	  <!-- Destructuring -->
+          <section>
+            <section><h1>Postmodern assignment: destructuring arguments</h1>
+              <h2 class='fragment'>Single-statement assignment</h2>
+              <h2 class='fragment'>Typesafe</h2>
+	      
+              <aside class='notes'>Una serie de razones por las que
+            esto es chulo: <a
+            href='https://css-tricks.com/new-favorite-es6-toy-destructured-objects-parameters/'>referido
+                a ES6 y a argumentos de función</a></aside>
+            </section>
+
+            <section><h1>Kotlin and Derrida</h1>
+              <pre><code>data class Result (val result: Int, val treasure: Boolean)
+fun main(args: Array&lt;String>) {
+        val search =  fun(attempt: Int): Result
+        {
+                val things = listOf( 3, 33, 333, 42, 1, 1, 111 )
+                if ( attempt == 4  ) {
+                        return Result( 42, true )
+                } else {
+                        return Result( things[attempt], false )
+                }
+        }
+        val (value1, prize1) = search( 2 )
+        println( "2 returns " + value1 + prize( prize1 )  )
+        val (value2, prize2) = search( 4 )
+        println( "4 returns " + value2 + prize( prize2 )  )
+}              </code></pre>
+              <aside class='notes'>Por medio, <a
+              href='https://stackoverflow.com/questions/56252911/i-get-the-error-no-main-manifest-attribute-when-compiling-and-running-a-simpl/56253260#56253260'>esta
+                  pregunta en StackOverflow</a>. También usamos un lambda.Derrida is the father of <a href='https://en.wikipedia.org/wiki/Jacques_Derrida'>Deconstruction</a></aside>
+            </section>
+          </section>
+          
+	  <!-- Pattern matching -->
+          <section>
+          <section data-background='https://live.staticflickr.com/98/248298523_e53c4a51a2_o_d.jpg'>
+            <h1>Pattern matching for complex decisions</h1>
+            <h2 class='fragment'>Avoiding <code>if</code> cascades</h2>
+          </section>
+          <section><h1>Scala-ing comparison</h1>
+            <pre><code>val points = (card: String) => {
+  card match {
+    case "Ace" => 11
+    case "3"  => 10
+    case "J"  => 2
+    case "Q"  => 3
+    case "K"  => 4
+    case  _   => 0
+  }
+}
+
+println("Ace ", points("Ace"))
+println("7 ", points("7"))</code></pre><aside class='notes'>Usando también un lambda
+              aquí, como casi siempre. La mayoría de los lenguajes
+              funcionales tienen este tipo de comparación de
+              patrones. Sorprendentemente, este programa salió a la
+              primera. Pero a veces hay que enganchar las entradas de
+              uno con las salidas de otro...</aside>
+          </section>
+          </section>
+          
+	  <!-- Pipeline/Cascade operators -->
+
+          <section>
+            <section data-background='https://live.staticflickr.com/95/239126627_40897e494e_o_d.jpg'>
+	      <h1>Cascading operations</h1>
+              <aside class='notes'>Se trata de otra característica de
+            programación funcional, como casi todo. Esta funcionalidad
+            te permite "seguir" el flujo de los datos fácilmente, pero
+            también te fuerza a pensar en términos de aplicaciones de
+                unos dominios a otros dominios.</aside>
+            </section>
+	    
+            <section><h1>I've got an Elixir for that</h1>
+              <pre><code>result = 1..100
+      |> Enum.filter(fn a -> rem(a,2) == 0 end)
+      |> Enum.map(fn a -> :math.pow(a,2) end)
+      |> Enum.reduce( &(&1 + &2) )
+
+IO.puts  result
+              </code></pre> <aside class='notes'>Obsérvese no sólo el
+              uso de lambdas, sino el uso de las mismas con datos
+                implícitos. Otra cosa funcional a la buchaca. Elixir is pretty functional, also.</aside>
+            </section>
+          </section>
+          
+	  <!-- Multiple dispatch -->
+          <section>
+            <section><h1>Multiple dispatch</h1>
+              <h2 class='fragment'>High performance implementation at your
+                service</h2>
+              <aside class='notes'>No es lo mismo que <a
+              href='http://wiki.c2.com/?MultipleDispatch'>Overloading</a>,
+              porque se puede hacer con subrutinas y se trata de
+                identificar los argumentos, no el tipo que lo invoca. Although at the end of the day the object is another argument, so it¡s pretty much the same.
+	      </aside>
+              
+            </section>
+
+            <section><h1>Suit up with Julia</h1>
+              <pre><code>@enum Suit ♣ ♦ ♥ ♠
+@enum Palo Bastos Espadas Oros Copas
+
+toString( n::Int, s::Suit ) = string( n, " ", s )
+toString( n::Int, p::Palo ) = string( n, " de ", p )
+
+println( toString( 3, ♦) )
+println( toString( 7, Bastos ) ) </code></pre>
+              <aside class='notes'>Hay muchos tipos de envío múltiple
+              que varían con la signatura, lo que ocurre es que la
+              signatura tiene un concepto mucho más concreto en Julia
+              que en Perl 6, donde incluye también restricciones a los
+                valores de los argumentos. </aside>
+            </section>
+          </section>
+
+	  <!-- Laziness -->
+          <section>
+            <section><h1>Sloths will inherit the earth</h1>
+              <h2 class='fragment'>Lazy evaluation FTW</h2>
+	      
+              <aside class='notes'>Otra característica (más) de
+          programación funcional, permite trabajar con estructuras de
+                datos infinitas y retrasar la evaluación hasta que sea
+          necesaria. Puede tener <a
+          href='https://softwareengineering.stackexchange.com/questions/124500/why-isnt-lazy-evaluation-used-everywhere'>una
+                serie de desventajas</a>, sin embargo. Más <a
+          href='https://www.seas.upenn.edu/~cis194/fall16/lectures/07-laziness.html'>ventajas
+                y desventajas</a></aside>
+            </section>
+
+            <section><h1>Lazy in F#</h1>
+              <pre><code>let horadam =
+    (0.0f, 1.0f) 
+    |> Seq.unfold (fun (x, y) -> let z = 0.25f*x + 0.75f*y in Some(z, (y, z))) 
+    |> Seq.append [0.0f; 1.0f]
+
+
+let seq_15 = horadam |> Seq.take 15
+printfn "First 15 %A" seq_15
+              </code></pre>
+              <aside class='notes'>También se usan lambdas y "pipes",
+                dos cosas características de programación
+                funcional. El hecho de que sea infinita está implícita
+                en la definición de la estructura de datos, que es una
+                secuencia. F# no es perezoso por omisión como Haskell,
+                pero permite trabajar fácilmente con este tipo de
+                cosas. </aside>
+            </section>
+          </section>
+          
+	  <!-- Traits (with type tunnelling) -->
+          <section>
+            <section><h1>Inheriting << composing</h1>
+              <h2 class='fragment'><em>Traits</em>, <em>mixins</em> and
+                roles</h2>
+              <aside class='notes'>Aunque cada lenguaje usa su
+          definición, aparentemente los traits son interfaces
+          abstractos y no incluyen estado, mientras que los mixins
+          sí. En algunos lugares se les llama modules (en Ruby). Roles
+                aparentemente pueden ser o una cosa o la otra.</aside>
+            </section>
+
+            <section><h1>Safe Rust-y traits</h1>
+              <pre><code>struct Card { value: String, suit: &'static str }
+
+trait Lookup {
+    fn lookup(self ) -> String;
+}
+
+impl Lookup for Card  {
+    fn lookup(self ) -> String {
+        self.value + " of " + self.suit
+    }
+}
+
+fn main() {
+    let ace_of_clubs = Card { value: "Ace".to_string(),
+                               suit: "♣"
+    };
+    println!( "Card → {}", ace_of_clubs.lookup() );
+}
+
+              </code></pre>
+              <aside class='notes'>Aunque en realidad los de Perl 6
+    son bastante más flexibles y se pueden añadir en tiempo de
+    ejecución, esto es lo que hay en Rust, donde además se separan las
+    variables de instancia de la implementación. Y con esto terminan
+    las diez características chulas. Hay muchas más, pero estas son
+                bastante sobresalientes.</aside>
+            </section>
+            
+          </section>
+
+	<section data-background='https://live.staticflickr.com/7914/46806908884_b4df834428_k_d.jpg'>
+	  <h1>JJ Merelo</h1>
+	  <h2><code>@jjmerelo</code> <a href='https://github.com/JJ'><code>github.com/JJ</code></a></h2>
+	  <aside class='notes'>Trabajo en la universidad, en la documentación de Perl 6, y todo ese rollo</aside>
+	</section>
+
+        <section data-background='https://live.staticflickr.com/65535/48549954721_0a93aa703f_k_d.jpg'>
+	  <h1>What's the killer app of Perl 6</h1>
+          <h2 class='fragment'>Learning programming languages!</h2>
+        </section>
+        
+        <section>
+          <section><h1>All these are in Perl 6</h1>
+            <aside class='notes'>Todas esas son funcionalidades de Perl
+              6</aside>
+          </section>
+	  
+          <section data-background='emacs.png'><h1>Took me a while</h1>
+            <h2 class='fragment'>Syntax is tricky</h2>
+	    <h3 class='fragment'>And there's a new Emacs mode to install</h3>
+            <aside class='notes'>Bueno, y por descargar el modo en
+          emacs, instalar el programa en sí... El que más ha costado
+              ha sido Rust, y el que menos Elixir.</aside>
+          </section>
+        </section>
+
+        <section>
+          <section data-background='https://live.staticflickr.com/65535/40943471043_5226aa62ad_k_d.jpg'>
+            <h1>Perl 6: Everything <strong>and</strong> the kitchen sink</strong></h1></section>
+          <section><pre><code>multi sub collatz( 1 ) { return [1] }
+multi sub collatz( Int $a where $a %% 2 ) { return collatz( ($a/2).Int ).prepend( $a )}
+multi sub collatz( $a where not $a %% 2 ) { return collatz( $a*3 + 1 ).prepend($a)}
+
+my @collatz = lazy gather for ١..١٠٠٠ { take collatz( $_ ); }
+
+1..100 ==> map( { @collatz[ $_ ] }) ==> grep( *.elems > 15 ) ==> my @long-chains;
+
+sub prefix:<⇈> ( $𝒾 ) {
+    given @collatz[ $𝒾 ].elems {
+        when $_ > 15 { return @collatz[ $𝒾 ] but "15-Collatz", @collatz[ $𝒾 ].elems }
+        default  { @collatz[ $𝒾 ], @collatz[ $𝒾 ].elems }
+    }
+}
+
+for ^10 -> $þ {
+    my ($seq, $elems) = ⇈$þ;
+    say "Sequence with $þ ", $seq.?Str eq "Collatz" ?? " is " !! " is not " , "15-Collatz";
+}
+          </code></pre>
+          <aside class='notes'><a
+    href='https://es.wikipedia.org/wiki/Conjetura_de_Collatz'>Conjetura
+    de Collatz</a>. Este programa tiene todas las características
+    chulas de las que hemos hablado anteriormente. Y algunas que no
+    tiene ninguno, como los rangos en el sentido correcto de escritura
+	    y usando dígitos unicode. It's better here to use context-sensible unicode, because if you don't it's like line noise.
+	  </aside>
+
+          </section>
+
+	  <section><h2>Sometimes it's also faster</h2>
+	    <img src='code/fib-py-vs-p6.png' alt='Perl 6 can be faster at some of these things than the language' style='height:500px'>
+	  </section>
+	  
+          <section><h1>Learn Perl 6 to learn every single language</h1>
+            <h2 class='fragment'>Or at least the cool ones.</h2>
+	    <aside class='notes'>You can learn also a part of Perl 6 to learn a kind of languages, like functional, for instance.</aside>
+          </section>
+
+	</section>
+	
+        <section
+            data-background='https://live.staticflickr.com/4748/39219833084_2a18eecdd8_k_d.jpg'><h1>Questions?</h1>
+            <h2 class='fragment'>Comments?</h2>
+            <aside class='notes'>"La niña del huevo", de Ángeles
+            Santos, una maravilla. Espero que no os hayáis dormido
+              como ella.</aside>
+        </section>
+
+          
+
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+     Reveal.initialize({
+       width: '95%',
+       controls: true,
+       progress: true,
+       history: true,
+       dependencies: [
+	 { src: 'plugin/markdown/marked.js' },
+	 { src: 'plugin/markdown/markdown.js' },
+	 { src: 'plugin/notes/notes.js', async: true },
+	 { src: 'plugin/highlight/highlight.js', async: true }
+       ]
+     });
+    </script>
+  </body>
+</html>
