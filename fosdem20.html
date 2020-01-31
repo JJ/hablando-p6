@@ -73,87 +73,47 @@ console.log(isελληνικά('π'));
 	<!-- Lambda -->
 	  <section>
 	    <section><h1>λ FTW</h1>
-	      <aside class='notes'>Funciones como datos, la esencia de la programación funcional. Como explican aquí: <a href='https://gist.github.com/ericelliott/414be9be82128443f6df'>lambdas no sólo son funciones anónimas</a>. This is the first step to a language having functional features; it's not all.</aside>
-	    </section>
-	    
-	    <section><h1>λ is lambda</h1>
-	      <pre><code>from functools import reduce;
-
-def fib(n):
-    return reduce( lambda prev,this: prev+[ prev[-2]+prev[-1] ], \
-                   range(1,n+1), \
-                   [1,1] )
-
-print(fib(12))
-	      </code></pre>
-	      <aside class='notes'>Se usa reduce con tres argumentos, el primero de los cuales es el inicializador. Lambda está ahí desde la versión 3, pero también en Java desde la 7, y creo que ahora hasta en C++. They are pretty much all over.</aside>
-	    </section>
-	  </section>
-	  
-	  <!-- Inmutabilidad -->
-	  <section>
-	    <section><h1>Immutability for high performance</h1>
-	    </section>
-	    
-	    <section><h1>What's immutable can't be changed</h1>
-	      <aside class='notes'>Ni extender, ni se puede acceder a métodos que lo cambien, ni nada. Si algo parece que lo cambia, es porque se genera uno nuevo. Permite trabajar con funciones puras, es más fácil de testear.</aside>
-	    </section>
-	    
-	    <section><h1>Scala-ing immutability</h1>
-	      <pre><code>val dont = "change me"</code></pre>
-	    </section>
+              <h1>+ Immutability</h1>
+	      <aside class='notes'>Funciones como datos, la esencia de
+	  la programación funcional. Como explican aquí: <a
+	  href='https://gist.github.com/ericelliott/414be9be82128443f6df'>lambdas
+	  no sólo son funciones anónimas</a>. This is the first step
+	  to a language having functional features; it's not all. Ni
+	  extender, ni se puede acceder a métodos que lo cambien, ni
+	  nada. Si algo parece que lo cambia, es porque se genera uno
+	  nuevo. Permite trabajar con funciones puras, es más fácil de
+	  testear. These are two functional features that got
+	  everywhere.</section>
 
 	    <section data-background='https://live.staticflickr.com/4806/31057964327_dc046005ee_k_d.jpg'>
-	      <h1>Old as a loop</h1>
-	      <pre><code>(defn to-zero [n]
+	      <h1>Warning: your loops are deprecated</h1>
+	      <pre><code>(def elipsis (fn [n] (print "... ", n ) ))
+
+(defn to-zero [n]
   (if (> n 0)
     (do
-      (print n, "... ")
+      (elipsis [n])
       (to-zero (dec n))
       )
     )
   )
 
-(to-zero 3)
-	      </code></pre>
+(to-zero 3)</code></pre>
 	      <aside class='notes'>Inmutabilidad y recursión van de la mano. No hay una variable de bucle que cambie de valor, sino un argumento inmutable que pasa de una función a otra.</aside>
 	    </section>
 	  </section>
 	  
-	  <!-- Gradual typing -->
-	  <section>
-            <section><h1>Gradual typing: best of both worlds</h1>
-              <h2 class='fragment'>Static: <code>let secondNeedle: number =
-	  3</code></h2>
-              <h2 class='fragment'>Dynamic: <code>let firstNeedle = "Hey"</code></h2>
-            </section>
-            <section><h1>Together in TypeScript</h1>
-              <pre><code>let find = function ( needle, haystack ) {
-    for (let i of haystack) {
-        if ( needle === i ) {
-            return true
-        }
-    }
-    return false;
-}
-let randomList = ["Hey", 3]
-let firstNeedle = "Hey"
-let secondNeedle: number = 3
-console.log( find( firstNeedle, randomList ) )
-console.log( find( secondNeedle, randomList  ) )  </code></pre>
-                <aside class='notes'>Nótese que también tenemos una
-	  lambda ahí al principio. Información sobre <a
-	          href='https://golem.ph.utexas.edu/category/2018/02/gradual_typing.html'>gradual typing</a></aside>
-            </section>
-          </section>
-          
-	  <!-- Destructuring -->
+	  <!-- Gradual typing and destructuring -->
           <section>
-            <section><h1>Postmodern assignment: destructuring arguments</h1>
-              <h2 class='fragment'>Single-statement assignment</h2>
-              <h2 class='fragment'>Typesafe</h2>
-	      
-              <aside class='notes'>Una serie de razones por las que
+            <section><h1>Postmodern assignment:</h1>
+              <h2 class='fragment'>Destructuring arguments</h2>
+              <h2 class='fragment'>Gradual typing</h2>
+
+              <aside class='notes'>Flexible, allows many different
+            ways of dealing with variables, but it's also typesafe;
+            but destructuring is also very typesafe, since you can
+            create several variables out of one simple, structured,
+            one. Una serie de razones por las que
             esto es chulo: <a
             href='https://css-tricks.com/new-favorite-es6-toy-destructured-objects-parameters/'>referido
                 a ES6 y a argumentos de función</a></aside>
@@ -178,7 +138,8 @@ fun main(args: Array&lt;String>) {
 }              </code></pre>
               <aside class='notes'>Por medio, <a
               href='https://stackoverflow.com/questions/56252911/i-get-the-error-no-main-manifest-attribute-when-compiling-and-running-a-simpl/56253260#56253260'>esta
-                  pregunta en StackOverflow</a>. También usamos un lambda.Derrida is the father of <a href='https://en.wikipedia.org/wiki/Jacques_Derrida'>Deconstruction</a></aside>
+                  pregunta en StackOverflow</a>. También usamos un
+              lambda. Derrida is the father of <a href='https://en.wikipedia.org/wiki/Jacques_Derrida'>Deconstruction</a></aside>
             </section>
           </section>
           
