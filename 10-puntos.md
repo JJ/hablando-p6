@@ -61,6 +61,7 @@ Pero también rangos (Ranges) y secuencias. Que pueden ser infinitos
 > 1..10
 > ^3
 > 3..∞
+
 > 'א'..'ג'
 
 Las secuencias permiten generación automática
