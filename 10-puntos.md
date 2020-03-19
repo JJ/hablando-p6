@@ -46,4 +46,36 @@ Pero Raku facilita el acceso al mismo:
 
 Hay varias decenas de tipos básicos. Por ejemplo conjuntos
 
-> <1 2 3>.set
+> <1 2 3>.Set
+
+## Mensajes de error bien diseñados
+
+> (1,2).mix
+
+## Operaciones básicas
+
+Operaciones aritméticas (incluyendo Unicode)
+
+Pero también rangos (Ranges) y secuencias. Que pueden ser infinitos
+
+> 1..10
+> ^3
+> 3..∞
+> 'א'..'ג'
+
+Las secuencias permiten generación automática
+
+> 1,1, * + * … 100000
+
+Los conjuntos tienen operadores específicos
+
+> <a b c>.Set ∪ <c d e>.Set
+> (^10).Set ∩ (3,5…15).Set
+
+## Las funciones son ciudadanas de primera clase
+
+La variable $_, @_, %_ es la variable *tópico* o variable por defecto (y las variables llevan sigilos)
+
+> $_ = { sum( @_ )}; $_(^20)
+
+
