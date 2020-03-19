@@ -20,3 +20,30 @@ Dígitos Unicode cualesquiera
 
 > ⅔ + ⅓ - ১
 
+Los dígitos operan como deben
+
+> e²
+
+## Tipos y literales
+
+Raku es orientado a objetos (entre otras cosas). Todo es un objeto. También los tipos.
+
+>  "objeto".WHAT
+> (1+3i).WHAT
+> Str.WHAT
+
+Raku tiene acceso al protocolo de meta objetos, el HOW (Higher order working)
+
+> (3,4,5).HOW
+
+Que, a su vez, es un objeto
+
+>  (:hey).HOW.name((:hey))
+
+Pero Raku facilita el acceso al mismo:
+
+> (:hey).^name
+
+Hay varias decenas de tipos básicos. Por ejemplo conjuntos
+
+> <1 2 3>.set
